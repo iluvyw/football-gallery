@@ -1,0 +1,18 @@
+.main {
+    width: 100vw;
+    height: auto;
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      width: 80vw;
+      height: 80vh;
+      object-fit: cover;
+      margin: 0%;
+      padding: 0%;
+      opacity: 0%;
+      margin: 10vh 10vw;
+      transform: translateX(-200px);
+    }
+  }
