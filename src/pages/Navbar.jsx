@@ -8,46 +8,32 @@ export default function Navbar() {
     const [isDisplay,setIsDisplay] = useState(false)
     const [isDisabled,setIsDisabled] = useState(false)
     const menuRef = useRef(null)
+    const tl = useRef(gsap.timeline({paused: true}));
 
     useEffect(() => {
-        console.log(isDisplay)
-    },[isDisplay])
+        const menuChildren = [].slice.call(menuRef.current.children)
+        tl.current.to(menuRef.current,{
+            height: "100vh",
+            duration: TL_DURATION
+        })
+        menuChildren.forEach(child => {
+            tl.current.to(child, {
+                x: 0,
+                opacity: "100%",
+                duration: TL_DURATION,
+            })
+        })
+    },[])
 
     const TL_DURATION = 0.2
 
     const animationProcess = () => {
         const menuChildren = [].slice.call(menuRef.current.children)
-        setIsDisabled(true)
         if (!isDisplay){
-            const tl = gsap.timeline()
-            tl.to(menuRef.current,{
-                height: "100vh",
-                duration: TL_DURATION
-            })
-            menuChildren.forEach(child => {
-                tl.to(child, {
-                    x: 0,
-                    opacity: "100%",
-                    duration: TL_DURATION,
-                })
-            })
+            tl.current.play()
         }
         else {
-            const tl = gsap.timeline()
-            menuChildren.forEach(child => {
-                tl.to(child, {
-                    x: -100,
-                    duration: TL_DURATION/2,
-                })
-                tl.to(child, {
-                    opacity: "0%",
-                    duration: TL_DURATION/2,
-                })
-            })
-            tl.to(menuRef.current,{
-                height: "0vh",
-                duration: TL_DURATION
-            })
+            tl.current.reverse()
         }
         setIsDisabled(false)
     }
