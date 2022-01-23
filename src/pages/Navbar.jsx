@@ -6,7 +6,7 @@ import gsap from 'gsap'
 
 export default function Navbar() {
     const [isDisplay,setIsDisplay] = useState(false)
-    const [isDisabled,setIsDisabled] = useState(false)
+    // const [isDisabled,setIsDisabled] = useState(false)
     const menuRef = useRef(null)
     const tl = useRef(gsap.timeline({paused: true}));
 
@@ -28,14 +28,12 @@ export default function Navbar() {
     const TL_DURATION = 0.2
 
     const animationProcess = () => {
-        const menuChildren = [].slice.call(menuRef.current.children)
         if (!isDisplay){
             tl.current.play()
         }
         else {
             tl.current.reverse()
         }
-        setIsDisabled(false)
     }
 
     const handleMenuClick = async () => {
@@ -45,7 +43,7 @@ export default function Navbar() {
 
     return (
         <>
-            <button className="bar-box" onClick={() => handleMenuClick()} disabled={isDisabled}>
+            <button className="bar-box" onClick={() => handleMenuClick()}>
                 <img src={isDisplay ? Close : Open} alt="bars"/>
             </button>
             <div ref={menuRef} className="menu">

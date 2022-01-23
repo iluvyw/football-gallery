@@ -3,8 +3,10 @@ import Navbar from "./pages/Navbar";
 
 function App() {
   return (
-    // <Gallery/>
-    <Navbar/>
+    <>
+      <Gallery/>
+      <Navbar/>
+    </>
   );
 }
 

@@ -10,9 +10,9 @@ export default function Gallery() {
   const mainRef = useRef(null)
 
   useEffect(() => {
-    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-    const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-    const totalHeight = mainRef !== null ? mainRef.current.offsetHeight : 0
+    // const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    // const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    // const totalHeight = mainRef !== null ? mainRef.current.offsetHeight : 0
     // const tl = gsap.timeline({
     //   scrollTrigger: {
     //     trigger: ".main",
