@@ -6,7 +6,7 @@ import {imageList} from '../data/images'
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Gallery() {
-  // const boxRef = useRef(null)
+  const introRef = useRef(null)
   const mainRef = useRef(null)
 
   useEffect(() => {
@@ -22,18 +22,36 @@ export default function Gallery() {
     //     end: `${totalHeight - vh}px 0%`,
     //   }
     // })
-    const children = [].slice.call(mainRef.current.children);
+    console.log(introRef.current)
+    gsap.to(introRef.current.firstChild, {
+      opacity: 1,
+      duration: 2,
+      x: 0
+    })
+    const children = [].slice.call(mainRef.current.children)
     children.forEach(child => {
-      console.log(child)
-      gsap.to(child, {
+      // console.log(child.firstChild)
+      const tl = gsap.timeline({ 
+        scrollTrigger: {
+          trigger: child,
+          start: "top 90%",
+          end: "bottom 100%",
+          scrub: true
+        },
+      })
+      const grandchildren = [].slice.call(child.children)
+      tl.to(grandchildren[0], {
         opacity: "100%", 
         duration: 1, 
         x: 0,
-        scrollTrigger: {
-          trigger: child,
-          end: "bottom center",
-          scrub: true
-        },
+      })
+      tl.to(grandchildren[1], {
+        opacity: 1,
+        x: "50vw",
+      })
+      tl.to(grandchildren[2], {
+        opacity: 1,
+        x: "50vw"
       })
     })
 
@@ -50,8 +68,19 @@ export default function Gallery() {
   },[])
 
   return (
-    <div className="main" ref={mainRef}>
-      {imageList.map((image,index) => <img key={index} src={image} alt="mcfc"/>)}
-    </div>
+    <>
+      <div className="intro" ref={introRef}>
+        <h1>Gallery</h1>
+      </div>
+      <div className="main" ref={mainRef}>
+        {imageList.map((image,index) => 
+          <div key={index}>
+            <img src={image.src} alt="mcfc"/>
+            <h1>{image.title}</h1>
+            <h2>{image.description}</h2>
+          </div>
+        )}
+      </div>
+    </>
   );
 }

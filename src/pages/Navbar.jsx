@@ -47,9 +47,9 @@ export default function Navbar() {
                 <img src={isDisplay ? Close : Open} alt="bars"/>
             </button>
             <div ref={menuRef} className="menu">
-                <h1>Section 1</h1>
-                <h1>Section 2</h1>
-                <h1>Section 3</h1>
+                <h1>Home</h1>
+                <h1>Gallery</h1>
+                <h1>About</h1>
             </div>
         </>
     )
