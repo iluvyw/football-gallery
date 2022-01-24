@@ -3,12 +3,15 @@ import './Navbar.scss'
 import Open from '../icons/open.png'
 import Close from '../icons/close.png'
 import gsap from 'gsap'
+import { useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
     const [isDisplay,setIsDisplay] = useState(false)
     // const [isDisabled,setIsDisabled] = useState(false)
     const menuRef = useRef(null)
     const tl = useRef(gsap.timeline({paused: true}));
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         const menuChildren = [].slice.call(menuRef.current.children)
@@ -41,15 +44,20 @@ export default function Navbar() {
         setIsDisplay(!isDisplay)
     }
 
+    const handleNavigate = (url) => {
+        navigate(url)
+        handleMenuClick()
+    }
+
     return (
         <>
             <button className="bar-box" onClick={() => handleMenuClick()}>
                 <img src={isDisplay ? Close : Open} alt="bars"/>
             </button>
             <div ref={menuRef} className="menu">
-                <h1>Home</h1>
-                <h1>Gallery</h1>
-                <h1>About</h1>
+                <h1 onClick={() => handleNavigate("/")}>Home</h1>
+                <h1 onClick={() => handleNavigate("/gallery")}>Gallery</h1>
+                <h1 onClick={() => handleNavigate("/about")}>About</h1>
             </div>
         </>
     )

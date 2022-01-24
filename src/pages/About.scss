@@ -1,0 +1,30 @@
+.about {
+    height: 100vh;
+    width: 100vw;
+    background-color: #091442;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .icon-container{
+        height: 80%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        img {
+            height: 100px;
+            width: 100px;
+            margin: 50px;
+            transform: translateY(200px);
+            opacity: 0%;
+            cursor: pointer;
+        }
+    }  
+    h1 {
+        color: white;
+        font-weight: 200;
+        font-size: 1rem;
+    }
+}

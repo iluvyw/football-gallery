@@ -9,6 +9,7 @@
     background-color: transparent;
     padding: 0;
     z-index: 20;
+    cursor: pointer;
     img{
         width: 100%;
         height: 100%;
@@ -33,5 +34,11 @@
         opacity: 0%;
         transform: translateX(-200px);
         color: white;
+        font-weight: 200;
+        cursor: pointer;
+        transition: ease;
+        &:hover {
+            font-weight: 400;
+        }
     }
 }
