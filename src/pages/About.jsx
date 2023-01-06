@@ -29,7 +29,7 @@ export default function About() {
         <div className="about">
             <div className="icon-container" ref={iconRef}>
                 <img src={FacebookIcon} alt="icon" onClick={() => goToUrl("https://www.facebook.com/an.phamhoang.1/")}/>
-                <img src={InstagramIcon} alt="icon" onClick={() =>goToUrl("https://www.instagram.com/emoji_j.j/")}/>
+                <img src={InstagramIcon} alt="icon" onClick={() =>goToUrl("https://www.instagram.com/anpham2408/")}/>
                 <img src={GithubIcon} alt="icon" onClick={() => goToUrl("https://github.com/iluvyw")}/>
                 <img src={LinkedinIcon} alt="icon" onClick={() => goToUrl("https://www.linkedin.com/in/anphamhoang/")}/>
             </div> 
